@@ -5,9 +5,31 @@
 
 {% block content %}
 
-<h1>Homepage</h1>
+<div class="container mt-3">
+    <div class="row m-3">
+        <div class="col-3">
 
-{% endblock %} 
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">Programlama</li>
+                <li class="list-group-item list-group-item-action">Web Programlama</li>
+                <li class="list-group-item list-group-item-action">Mobil Programlama</li>
+            </ul>
+        </div>
+        <div class="col-9"> 
+            <h1>Homepage</h1>
+            <hr>
+            
+            {% for blog in blogs %}
+                {% if blog.is_home and blog.is_active %}
+                    {% include 'blog/partials/_blog.html' %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
 
 
 

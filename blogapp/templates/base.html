@@ -12,66 +12,6 @@
   <body>
     {% include 'partials/_navbar.html' %}
 
-    <div class="container">
-
-        <div class="row m-3">
-            <div class="col-3">
-
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-action">Programlama</li>
-                    <li class="list-group-item list-group-item-action">Web Programlama</li>
-                    <li class="list-group-item list-group-item-action">Mobil Programlama</li>
-                
-                </ul>
-
-            </div>
-            <div class="col-9"> 
-
-                <div class="card mb-3">
-                    <div class="row g-2">
-                      <div class="col-md-3">
-                        <img src="{% static 'img/python-logo.png' %}" class="img-fluid rounded-start" alt="Python Logo">
-                      </div>
-                      <div class="col-md-9">
-                        <div class="card-body">
-                          <h5 class="card-title">Python Programlama</h5>
-                          <p class="card-text"> Lorem ipsum dolor sit amet.</p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-2">
-                      <div class="col-md-3">
-                        <img src="{% static 'img/react-logo.png' %}" class="img-fluid rounded-start" alt="Python Logo">
-                      </div>
-                      <div class="col-md-9">
-                        <div class="card-body">
-                          <h5 class="card-title">React Kütüphanesi</h5>
-                          <p class="card-text"> Lorem ipsum dolor sit amet.</p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-2">
-                      <div class="col-md-3">
-                        <img src="{% static 'img/angular-logo.png' %}" class="img-fluid rounded-start" alt="Python Logo">
-                      </div>
-                      <div class="col-md-9">
-                        <div class="card-body">
-                          <h5 class="card-title">Angular Kütüphanesi</h5>
-                          <p class="card-text"> Lorem ipsum dolor sit amet.</p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
     {% block content %} {% endblock %}
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

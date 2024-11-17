@@ -1,6 +1,38 @@
 {%extends 'base.html'%} {%block title%} Blog Details {%endblock%} 
 {% block content %}
 
-<h1>Blog Details: {{ id }}</h1>
+{%load static%}
+
+<div class="container mt-3">
+    <div class="row m-3">
+        <div class="col-3">
+
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">Programlama</li>
+                <li class="list-group-item list-group-item-action">Web Programlama</li>
+                <li class="list-group-item list-group-item-action">Mobil Programlama</li>
+            </ul>
+        </div>
+        <div class="col-9"> 
+            
+            <div class="card mb-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="{% static 'img/'|add:blog.img %}" class="img-fluid rounded-start" alt="Python Logo">
+                  </div>
+                  <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title"> 
+                            {{blog.title}} 
+                        </h5>
+                      <p class="card-text"> {{blog.description}}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
 
 {% endblock %} {% block js_files %} {%endblock%}
