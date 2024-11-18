@@ -17,9 +17,9 @@
             <h1>All Blogs</h1>
             <hr>
             {% for blog in blogs %}
-            {% if blog.is_active %}
-                {% include 'blog/partials/_blog.html' %}
-            {% endif %}
+                {% if blog.is_active %}
+                    {% include 'blog/partials/_blog.html' %}
+                {% endif %}
             {% endfor %}
         </div>
     </div>
