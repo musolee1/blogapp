@@ -6,21 +6,21 @@
 <div class="container mt-3">
     <div class="row m-3">
         <div class="col-3">
-
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-action">Programlama</li>
-                <li class="list-group-item list-group-item-action">Web Programlama</li>
-                <li class="list-group-item list-group-item-action">Mobil Programlama</li>
-            </ul>
+            {% include 'partials/_categories.html' %}
         </div>
         <div class="col-9"> 
             <h1>All Blogs</h1>
             <hr>
-            {% for blog in blogs %}
-                {% if blog.is_active %}
-                    {% include 'blog/partials/_blog.html' %}
-                {% endif %}
-            {% endfor %}
+            {% if blogs|length > 0 %}
+
+                {% for blog in blogs %}
+                    {% if blog.is_active %}
+                        {% include 'blog/partials/_blog.html' %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-warning">Hiç blog bulunamadı.</div>
+            {% endif %}
         </div>
     </div>
 </div>
