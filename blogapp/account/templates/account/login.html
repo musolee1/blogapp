@@ -1,22 +1,37 @@
-{%extends 'base.html'%} {% load static%} 
-{% block css_files %}
+{%extends 'base.html'%} {% load static%} {% block css_files %}
 <link rel="stylesheet" href="{% static 'account/css/style.css' %}" />
-{% endblock %} 
+{% endblock %} {%block title%} Login {%endblock%} {% block content %}
 
-{%block title%} Login {%endblock%} 
-
-
-{% block content %}
-
-<div class="container mt-3">
-<h1> Login </h1>
+<div class="container mt-3" style="height: 90vh">
+  <div class="row h-100 align-items-center">
+    <div class="col-lg-8 col-md-6">
+      <h1>Login</h1>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <form method="Post">
+        {% csrf_token %} 
+        {% if error %}
+            <div class="alert alert-danger">
+                {{error}}
+            </div>
+        {% endif %}
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" />
+        </div>
+        <div class="mb-3"></div>
+        <button type="submit" value="Login" class="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
-{% endblock %}
-
-
-
-
-{% block js_files %}
+{% endblock %} {% block js_files %}
 <script src="{% static 'account/js/script.js' %}"></script>
 {%endblock%}
