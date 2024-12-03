@@ -8,8 +8,8 @@
       <div class="col-md-9">
         <div class="card-body">
           <h5 class="card-title"> <a href="{% url 'blog_details' blog.slug %}"> {{blog.title}} </a> </h5>
-          
-          <p class="card-text"> {{blog.description |striptags |slice:"0:50"}}</p>
+          <p class="card-text"> {{blog.description |striptags | safe |slice:"0:350"}}</p>
+          <p class="card-text"><small class="text-muted"> {{ blog.blog_date|date:"d F Y" }}</small></p>
         </div>
       </div>
     </div>

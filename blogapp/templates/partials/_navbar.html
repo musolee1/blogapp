@@ -1,33 +1,28 @@
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg navbar-expand-md">
-    <div class="container">
-      <a class="navbar-brand"  href="{% url 'home'%}">Blogapp</a>
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'home'%}">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'blogs'%}">Blogs</a>
-          </li>
-      </ul>
-      <ul class="navbar-nav ms-auto">
-
-        {% if user.is_authenticated %}
-
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Welcome</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login'%}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'register'%}">Register</a>
-            </li>
-        {% endif %}
-
+<nav class="navbar navbar-dark navbar-expand-lg navbar-expand-md navbarbgdark">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home'%}">Blogapp</a>
+    <ul class="navbar-nav ms-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home'%}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'blogs'%}">Blogs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Welcome, {{user.username | capfirst}}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login'%}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register'%}">Register</a>
+      </li>
+      {% endif %}
     </ul>
-    </div>
-  </nav>
+  </div>
+</nav>

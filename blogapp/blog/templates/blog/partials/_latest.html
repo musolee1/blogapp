@@ -1,0 +1,10 @@
+<h1> Latest </h1>
+<div class="card m-4" style="width: 32rem">
+  <img src="{{ blog.image.url }}" class="img-fluid rounded-start" alt="">
+  <div class="card-body">
+        <p class="card-text"><small class="text-muted"> {{ blog.blog_date|date:"d F Y" }}</small></p>
+          <h5 class="card-title"> <a href="{% url 'blog_details' blog.slug %}"> {{blog.title}} </a> </h5>
+          <p class="card-text"> {{blog.description |striptags | safe |slice:"0:350"}}</p>        
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>    

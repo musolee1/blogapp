@@ -7,7 +7,8 @@ from blog.models import Blog, Category
 def index(request):
     context = {
         "blogs": Blog.objects.filter(is_home=True, is_active=True),
-        "categories": Category.objects.all()
+        "categories": Category.objects.all(),
+        "latest": Blog.objects.filter(is_home=True, is_active=True).order_by('-blog_date')
     }
     return render(request, 'blog/index.html', context)
 
@@ -34,3 +35,4 @@ def blogs_by_category(request, slug):
             "selected_category": slug
         }
         return render(request, 'blog/blogs.html', context)
+    

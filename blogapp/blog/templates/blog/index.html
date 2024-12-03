@@ -3,17 +3,36 @@
 {% endblock %} {%block title%} Homepage {%endblock%} 
 
 
-{% block content %}
 
-<div class="container mt-3">
+{% block content %}
+{% include 'blog/partials/_cover.html' %}
+
+<div class="container">
+
+<div class="row m-3">
+
+<div class="col-8">
+
+{% with latest|first as blog %}
+    {% if blog.is_home and blog.is_active %}
+        {% include 'blog/partials/_latest.html' %}
+    {% endif %}
+{% endwith %}
+
+
+</div>
+
+<div class="col-4">
+
+
+
+</div>
+</div>
     <div class="row m-3">
         <div class="col-3">
             {% include 'partials/_categories.html' %}
         </div>
-        <div class="col-9"> 
-            <h1>Homepage</h1>
-            <hr>
-            
+        <div class="col-9">
             {% for blog in blogs %}
                 {% if blog.is_home and blog.is_active %}
                     {% include 'blog/partials/_blog.html' %}

@@ -1,0 +1,19 @@
+.navbarbgdark {
+    background-color: #232536;
+}
+
+.cover{
+    height: 20vh; 
+    object-fit: cover;
+    position: relative;
+    height: 70vh;
+}
+
+.bg-transparent-custom{
+    background-color: rgba(35, 37, 54, 0.4);
+    padding: 20px;
+    border-radius: 2px
+    border-radius: 8px;
+    overflow: hidden;
+    height: 70vh;
+}

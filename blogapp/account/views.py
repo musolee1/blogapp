@@ -1,11 +1,13 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
 
 # Create your views here.
 
 def login_request(request):
+    if request.user.is_authenticated:
+        return redirect("home")
     if request.method == 'POST':
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -23,6 +25,8 @@ def login_request(request):
 
 
 def register_request(request):
+    if request.user.is_authenticated:
+        return redirect("home")
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
@@ -30,29 +34,47 @@ def register_request(request):
         lastname = request.POST.get("lastname")
         password = request.POST.get("password")
         repassword = request.POST.get("repassword")
-
+        
         if password == repassword:
             if User.objects.filter(username=username).exists():
-                return render(request, "account/register.html",{
-                "error": "Username is used"
+                return render(request, "account/register.html",
+            {
+                "error": "Username is used",
+                "username": username,
+                "email": email,
+                "firstname": firstname,
+                "lastname": lastname
+
             })
             else:
                 if User.objects.filter(email=email).exists():
-                    return render(request, "account/register.html",{
-                    "error": "Email is used."})
+                    return render(request, "account/register.html",
+                {
+                    "error": "Email is used.",
+                    "username": username,
+                    "email": email,
+                    "firstname": firstname,
+                    "lastname": lastname
+                })
                 else:
                     user = User.objects.create_user(username=username,email=email,first_name=firstname,last_name=lastname,password=password)
                     user.save()
                     return redirect("login")
             
         else:
-            return render(request, "account/register.html",{
-                "error": "The passwords you entered do not match!"
+            return render(request, "account/register.html",
+            {
+                "error": "The passwords you entered do not match!",
+                "username": username,
+                "email": email,
+                "firstname": firstname,
+                "lastname": lastname
             })
 
 
     return render(request, "account/register.html")
 
 def logout_request(request):
+    logout(request)
     return redirect("home")
 
