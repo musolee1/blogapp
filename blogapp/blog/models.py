@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from django.utils.dateparse import parse_datetime
+from django.contrib.auth.models import User
 
 
 
@@ -30,6 +31,7 @@ class Blog(models.Model):
     slug = models.SlugField(null=False, blank=True, unique=True, db_index=True, editable = False)
     categories = models.ManyToManyField(Category, blank = True)
     blog_date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return f"{self.title}"
