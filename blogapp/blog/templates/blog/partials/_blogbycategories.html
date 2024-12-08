@@ -1,0 +1,16 @@
+{%load static%}
+
+
+
+{% for category in categories %}
+    
+    <h2 class="m-3">{{ category.name }} </h2>
+
+       
+        <ul>
+            {% for blog in category.blog_set.all %}
+                {% include 'blog/partials/_blog.html' %}
+            {% endfor %}
+        </ul>
+  
+{% endfor %}

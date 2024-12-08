@@ -35,4 +35,3 @@ def blogs_by_category(request, slug):
             "selected_category": slug
         }
         return render(request, 'blog/blogs.html', context)
-    

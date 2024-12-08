@@ -4,8 +4,6 @@ from ckeditor.fields import RichTextField
 from django.utils.dateparse import parse_datetime
 from django.contrib.auth.models import User
 
-
-
 # Create your models here.
 
 #blogs/1.jpeg
@@ -14,6 +12,8 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=150)
     slug = models.SlugField(null=False, blank=True, unique=True, db_index=True, editable=False)
+    image = models.ImageField(default="fallback.webp", blank=True, upload_to="blogs")
+    description = models.TextField(max_length=100, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

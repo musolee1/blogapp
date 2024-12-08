@@ -8,39 +8,46 @@
 {% include 'blog/partials/_cover.html' %}
 
 <div class="container">
-
-<div class="row m-3">
-
-<div class="col-8">
-
-{% with latest|first as blog %}
-    {% if blog.is_home and blog.is_active %}
-        {% include 'blog/partials/_latest.html' %}
-    {% endif %}
-{% endwith %}
-
-
-</div>
-
-<div class="col-4">
-
-</div>
-</div>
     <div class="row m-3">
-        <div class="col-3">
+        <div class="col-8">
+            {% with latest|first as blog %}
+                {% if blog.is_home and blog.is_active %}
+                    {% include 'blog/partials/_latest.html' %}
+                {% endif %}
+            {% endwith %}
+</div>
+<div class="col-4">
+</div>
+<hr>
+</div>
+<div class="container-fluid mt-3">
+<div class="row">
+        {% include 'blog/partials/_blogbycategories.html' %}
+        <hr>
+</div>
+</div>
+
+
+</div>
+    <div class="container">
+    <div class="row m-3">
             {% include 'partials/_categories.html' %}
-        </div>
-        <div class="col-9">
+            <hr>
+    </div>
+    </div>
+<div class="container">
+<div class="row m-1">
+        <div class="container pt-5">
             {% for blog in blogs %}
                 {% if blog.is_home and blog.is_active %}
                     {% include 'blog/partials/_blog.html' %}
                 {% endif %}
             {% endfor %}
-
         </div>
     </div>
 </div>
-
+</div>
+</div>
 {% endblock %}
 
 

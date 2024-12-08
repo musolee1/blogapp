@@ -1,3 +1,11 @@
 h1{
-    color: black
+    color: red;
+}
+
+.my-card-image{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
