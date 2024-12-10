@@ -13,14 +13,21 @@
                   </div>
                   <div class="col-md-9">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h1 class="card-title fw-bold">
                             {{blog.title}} 
-                        </h5>
-                      <p class="card-text"> {{blog.description | safe}}</p>
-                    </div>
-                                      
+                        </h1>
+                      <p class="card-text"> {{blog.description | safe }}</p>
+                      
+                      <div class="position-absolute bottom-0 py-3">
+                      
+                      <form action="{% url 'blogpost_like' blog.id %}" method="POST">
+                            {% csrf_token %}
+                              <button type="submit" name="blog_id" value="{{blog.id}}" class="btn btn-primary">Like</button> - {{number_of_likes}}
+                      </form>
+                      </div>
+                    </div>                                      
                   </div>
-                  
+
                 </div>
             </div>
         

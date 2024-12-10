@@ -1,10 +1,15 @@
 {%load static%}
-<div class= "d-flex flex-row px-4">
-<div class="card" style="width: 16rem">
-  <div class="card-body">
-      <img src="{{blog.image.url}}" class="card-img-top" alt="" style>
-      <h5 class="card-title"> <a href="{% url 'blog_details' blog.slug %}"> {{blog.title}} </a> </h5>
-      <p class="card-text"> {{blog.description |striptags | safe |slice:"0:350"}}</p>
-      <p class="card-text"><small class="text-muted"> By {{blog.author | title}} | {{ blog.blog_date|date:"d F Y" }}</small></p>
+<div class="card h-100 d-flex flex-column" style="width: 19rem">
+  <img src="{{ blog.image.url }}" class="card-img-top" alt="">
+  <div class="card-body d-flex flex-column">
+      <h5 class="card-title fw-bold pt-2">
+        <a href="{% url 'blog_details' blog.slug %}" class="text-decoration-none text-dark">
+          {{ blog.title }}
+        </a>
+      </h5>
+      <p class="card-text flex-grow-1">{{ blog.description|striptags|safe|slice:"0:100" }}</p>
+      <p class="card-text">
+        <small class="text-muted">By {{ blog.author|title }} | {{ blog.blog_date|date:"d F Y" }}</small>
+      </p>
   </div>
 </div>

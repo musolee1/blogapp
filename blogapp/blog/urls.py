@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from .views import (BlogPostLike, BlogPostDetailView)
+
 
 #http://127.0.0.1:8000/ => index
 #http://127.0.0.1:8000/index => index
@@ -12,4 +14,5 @@ urlpatterns = [
     path('blogs', views.blogs, name='blogs'),
     path('category/<slug:slug>', views.blogs_by_category, name= 'blogs_by_category'),
     path('blogs/<slug:slug>', views.blog_details, name='blog_details'),
+    path('like/<int:pk>', views.BlogPostLike, name="blogpost_like"),
 ]

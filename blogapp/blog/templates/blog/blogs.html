@@ -1,30 +1,24 @@
 {%extends 'base.html'%} 
 
-{%block title%} Blogs {%endblock%} 
-
 {% block content %}
-<div class="container mt-3">
+
+{% include 'blog/partials/_cover.html' %}
+<div class="container-fluid mx-5">
     <div class="row m-3">
-        <div class="col-3">
-            {% include 'partials/_categories.html' %}
-        </div>
-        <div class="col-9"> 
-            <h1>Blogs</h1>
+            <h1>All Blogs</h1>
             <hr>
             {% if blogs|length > 0 %}
 
                 {% for blog in blogs %}
                     {% if blog.is_active %}
-                        {% include 'blog/partials/_blog.html' %}
+                        {% include 'blog/partials/_blogscard.html' %}
                     {% endif %}
                 {% endfor %}
             {% else %}
                 <div class="alert alert-warning">Hiç blog bulunamadı.</div>
             {% endif %}
-        </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block js_files %} {%endblock%}

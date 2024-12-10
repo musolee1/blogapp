@@ -35,24 +35,22 @@
             <hr>
     </div>
     </div>
-<div class="container">
-<div class="row m-1">
-        <div class="container pt-5">
-            {% for blog in blogs %}
-                {% if blog.is_home and blog.is_active %}
+    </div>
+
+<div class="container px-5">
+<h1 class="">All Blogs</h1>
+    <div class="row">
+        {% for blog in blogs %}
+            {% if blog.is_home and blog.is_active %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     {% include 'blog/partials/_blog.html' %}
-                {% endif %}
-            {% endfor %}
-        </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
-</div>
-</div>
+
 {% endblock %}
-
-
-
-
 {% block js_files %}
 <script src="{% static 'blog/js/script.js' %}"></script>
 {%endblock%}

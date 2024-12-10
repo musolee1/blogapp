@@ -1,16 +1,14 @@
 {%load static%}
 
-
-
 {% for category in categories %}
-    
-    <h2 class="m-3">{{ category.name }} </h2>
-
-       
-        <ul>
+    {% if forloop.first %}
+        <h2 class="m-3">{{ category.name }}</h2>
+        <div class="row">
             {% for blog in category.blog_set.all %}
-                {% include 'blog/partials/_blog.html' %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    {% include 'blog/partials/_blog.html' %}
+                </div>
             {% endfor %}
-        </ul>
-  
+        </div>
+    {% endif %}
 {% endfor %}

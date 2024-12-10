@@ -24,7 +24,7 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to="blogs")
+    image = models.ImageField(default="fallback.webp", blank=True,upload_to="blogs")
     description = RichTextField()
     is_active = models.BooleanField(default = False)
     is_home = models.BooleanField(default = False)
@@ -32,6 +32,10 @@ class Blog(models.Model):
     categories = models.ManyToManyField(Category, blank = True)
     blog_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    likes = models.ManyToManyField(User, related_name='blogpost_like')
+
+    def number_of_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return f"{self.title}"
@@ -45,3 +49,4 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.blog_date.strftime("%d %B %Y %H:%M")
+    
